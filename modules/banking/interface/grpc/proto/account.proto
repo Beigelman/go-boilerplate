@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/truepay/go-boilerplate/grpc/proto";
+
+import "google/protobuf/timestamp.proto";
+
+service AccountServices {
+  // Sends a greeting
+  rpc CreateAccountHandler (CreateAccountRequest) returns (CreateAccountResponse) {}
+}
+
+// The request message containing the user's name.
+message CreateAccountRequest {
+  string user_id = 1;
+}
+
+// The response message containing the greetings
+message CreateAccountResponse {
+  string id = 1;
+	string user_id = 2;
+	int32 balance = 3;
+	int32 limit = 4;
+	string status = 5;
+	google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
