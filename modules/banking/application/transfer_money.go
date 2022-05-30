@@ -5,14 +5,14 @@ import (
 	service "github.com/truepay/go-boilerplate/modules/banking/domain/services"
 )
 
-type TranferMoneyDTO struct {
+type TransferMoneyDTO struct {
 	fromAccountId string
 	toAccountId   string
 	amount        int
 }
 
-func MakeTransferMoney(repository repositories.AccountRepository) func(props TranferMoneyDTO) error {
-	return func(props TranferMoneyDTO) error {
+func MakeTransferMoney(repository repositories.AccountRepository) func(props TransferMoneyDTO) error {
+	return func(props TransferMoneyDTO) error {
 		fromAccount, err := repository.FindByID(props.fromAccountId)
 		if err != nil {
 			return err
@@ -23,7 +23,7 @@ func MakeTransferMoney(repository repositories.AccountRepository) func(props Tra
 			return err
 		}
 
-		err = service.TranferMoney(service.TransferMoneyDTO{
+		err = service.TransferMoney(service.TransferMoneyDTO{
 			FromAccount: fromAccount,
 			ToAccount:   toAccount,
 			Amount:      props.amount,

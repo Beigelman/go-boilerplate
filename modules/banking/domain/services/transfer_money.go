@@ -8,7 +8,7 @@ type TransferMoneyDTO struct {
 	Amount      int
 }
 
-func TranferMoney(props TransferMoneyDTO) error {
+func TransferMoney(props TransferMoneyDTO) error {
 	err := props.FromAccount.Withdraw(props.Amount)
 	if err != nil {
 		return err
